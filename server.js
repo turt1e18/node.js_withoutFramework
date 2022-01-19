@@ -20,18 +20,23 @@ const server = http.createServer((req, res) => {
     //     res.end(JSON.stringify({message: 'Not Found'}))
     // }
 
+    // GET 방식의 product 모두 조회
     if (req.url === '/api/product' && req.method === 'GET') {
         getProducts(req, res)
+    // GET 방식 param 기반의 데이터 조회
     }else if(req.url.match(/\/api\/product\/([0-9]+)/) && req.method === 'GET') {
         const id = req.url.split('/')[3]
         getProduct(req, res, id)
+    // POST 방식의 product 모두 추가
     }else if(req.url === '/api/product' && req.method === 'POST'){
         createProduct(req, res)
+    // PUT 방식의 기존 product 업데이트
     }else if(req.url.match(/\/api\/product\/([0-9]+)/) && req.method === 'PUT'){
         const id = req.url.split('/')[3]
         updateProduct(req, res, id)
+    // 위 url에 맞지않으면 404 에러를 띄움
     } else {
-        res.writeHead(400, { 'content-type': 'application/json' })
+        res.writeHead(404, { 'content-type': 'application/json' })
         res.end(JSON.stringify({ message: 'Not Found' }))
     }
 })
