@@ -8,6 +8,8 @@ const server = http.createServer((req, res) => {
     // res.write('<h1>Hello World</h1>')
     // res.end()
 
+
+    
     // res.writeHead(200,{ 'content-type':'application/json' })
     // res.end(JSON.stringify(products))
 
@@ -19,6 +21,11 @@ const server = http.createServer((req, res) => {
     //     res.writeHead(404, { 'content-type': 'application/json' })
     //     res.end(JSON.stringify({message: 'Not Found'}))
     // }
+
+    setTimeout(() => {
+        res.writeHead(408, {'Content-Type': 'application/json'})
+        res.end('Time Out')
+    },3000)
 
     // GET 방식의 product 모두 조회
     if (req.url === '/api/product' && req.method === 'GET') {
