@@ -17,7 +17,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # VSCODE Seeting
 .vscode/*
-!.vscode/settings.json
 
 # Runtime data
 pids
